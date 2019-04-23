@@ -1,33 +1,31 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+// 认证信息
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state: {
-    userInfo: {
+    user: {
       name: '暂未登录'
     }
   },
   getters: {
-    userInfo: state => {
-      return state.userInfo
+    user: state => {
+      return state.user
     }
   },
   mutations: {
-    setUserInfo (state, data) {
-      state.userInfo = data
+    setUser (state, data) {
+      state.user = data
     }
   },
   actions: {
     async getUserInfo (context) {
       let result = await new Promise((resolve) => {
         setTimeout(() => {
-          context.commit('setUserInfo', { name: 'Abiel' })
+          context.commit('setUser', { name: 'Abiel' })
           resolve({ name: 'Abiel' })
         }, 1000)
       })
       return result
     }
   }
-})
+}

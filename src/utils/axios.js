@@ -49,7 +49,7 @@ export default {
   post (url, data) {
     return axios({
       method: 'post',
-      baseURL: 'https://you.host.com',
+      // baseURL: 'http://localhost:8888', // 使用mock接口时注释掉
       url,
       data: data,
       timeout: 10000,
@@ -70,7 +70,7 @@ export default {
   get (url, params) {
     return axios({
       method: 'get',
-      baseURL: '',
+      // baseURL: 'http://localhost:8888', // 使用mock接口时注释掉
       url,
       params, // get 请求时带的参数
       timeout: 10000,
