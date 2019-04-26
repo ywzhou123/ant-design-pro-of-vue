@@ -35,6 +35,7 @@
                     'password',
                     { rules: [{ required: true, message: '请输入密码!' }] }
                   ]"
+                  @pressEnter='onSubmit'
                 >
                   <a-icon slot="prefix" type="lock" />
                 </a-input>
@@ -65,6 +66,7 @@
                         'captcha',
                         { rules: [{ required: true, message: '请输入验证码!' }, { pattern: /^\d{6}$/, message: '验证码格式错误' }] }
                       ]"
+                      @pressEnter='onSubmit'
                     >
                     <a-icon slot="prefix" type="mail" />
                   </a-input>
@@ -187,10 +189,10 @@ export default {
             console.log(res)
             if (res.code === 200) {
               // 登录成功跳转页面，保存用户信息，提示成功
-              // this.$router.push('/dashboard/workplace')
-              this.$store.commit('account/setUser', res.data.user)
               this.$message.success(res.message, 3)
+              this.$store.commit('account/setUser', res.data.user)
               this[this.activeKey + 'Error'] = ''
+              this.$router.push('/dashboard/analysis')
             } else {
               this[this.activeKey + 'Error'] = res.message
             }
